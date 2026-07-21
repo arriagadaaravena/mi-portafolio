@@ -1,0 +1,324 @@
+/* ==========================================
+   1. VARIABLES DE COLOR (Custom Properties)
+   ========================================== 
+   Definimos los colores UNA VEZ aquí arriba.
+   Así, si más adelante quieres cambiar el morado,
+   lo cambias en un solo lugar y se actualiza en
+   TODA la página automáticamente.
+*/
+:root {
+  --morado-oscuro: #3B0764;
+  --morado-principal: #6535ac;
+  --morado-medio: #8842c1;
+  --morado-claro: #A78BFA;
+  --morado-suave: #E9D5FF;
+  --blanco: #FFFFFF;
+  --gris-texto: #374151;
+  --gris-fondo: #F9FAFB;
+}
+
+/* ==========================================
+   2. RESET BÁSICO
+   ==========================================
+   Cada navegador (Chrome, Firefox, Safari) trae
+   márgenes y espacios por defecto distintos.
+   Este reset los pone todos en cero para que
+   partamos todos desde el mismo punto.
+*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; 
+  /* box-sizing: border-box es importante:
+     hace que el padding y el border se cuenten
+     DENTRO del ancho del elemento, no se sumen
+     aparte. Evita muchos dolores de cabeza. */
+}
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: var(--gris-texto);
+  line-height: 1.6; /* espacio entre líneas de texto, más legible */
+  background-color: var(--gris-fondo);
+}
+
+/* ==========================================
+   3. HEADER / NAVBAR
+   ==========================================
+   Flexbox es la herramienta clave aquí.
+   display: flex pone los elementos hijos
+   en fila (por defecto) y justify-content
+   controla cómo se distribuyen horizontalmente.
+*/
+.site-header {
+  background-color: var(--morado-principal);
+  padding: 1rem 2rem;
+  position: sticky; /* la barra queda "pegada" arriba al hacer scroll */
+  top: 0;
+  z-index: 100; /* asegura que quede por encima de otros elementos */
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between; /* logo a la izquierda, links a la derecha */
+  align-items: center; /* centra verticalmente */
+  max-width: 1100px;
+  margin: 0 auto; /* centra la barra en la página */
+}
+
+.logo {
+  color: var(--blanco);
+  font-size: 1.3rem;
+  font-weight: bold;
+  text-decoration: none; /* quita el subrayado típico de los links */
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem; /* espacio entre cada link, sin necesitar margin manual */
+  list-style: none; /* quita los puntitos de la lista */
+}
+
+.nav-links a {
+  color: var(--morado-suave);
+  text-decoration: none;
+  transition: color 0.2s; /* efecto suave al pasar el mouse */
+}
+
+.nav-links a:hover {
+  color: var(--blanco);
+}
+
+/* ==========================================
+   4. SECCIONES GENERALES
+   ==========================================
+   Todas las <section class="section"> comparten
+   este espaciado base, para mantener consistencia.
+*/
+.section {
+  max-width: 1100px;
+  margin: 0 auto; /* centra el contenido horizontalmente */
+  padding: 4rem 2rem; /* espacio arriba/abajo y a los costados */
+}
+
+.section h2 {
+  color: var(--morado-principal);
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+/* ==========================================
+   5. HERO / SOBRE MÍ
+   ==========================================
+*/
+.hero {
+  text-align: center;
+  background: linear-gradient(135deg, var(--morado-principal), var(--morado-oscuro));
+  color: var(--blanco);
+  padding: 5rem 2rem;
+  max-width: 100%; /* el hero ocupa todo el ancho, a diferencia de .section */
+}
+
+.hero h1 {
+  font-size: 2.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.hero h2 {
+  color: var(--morado-suave); /* sobreescribe el color morado oscuro de arriba */
+  font-size: 1.3rem;
+  font-weight: normal;
+  margin-bottom: 2rem;
+}
+
+.profile-photo {
+  width: 180px;
+  height: 180px;
+  object-fit: cover; /* evita que la foto se vea estirada o aplastada */
+  border-radius: 50%; /* la vuelve circular */
+  border: 4px solid var(--morado-claro);
+  margin-bottom: 2rem;
+}
+
+.hero p {
+  max-width: 650px;
+  margin: 0 auto 2rem auto; /* centra el párrafo y le da espacio abajo */
+}
+
+.btn-primary {
+  display: inline-block;
+  background-color: var(--blanco);
+  color: var(--morado-principal);
+  padding: 0.8rem 2rem;
+  border-radius: 30px; /* botón tipo "pill" bien redondeado */
+  text-decoration: none;
+  font-weight: bold;
+  transition: transform 0.2s; /* efecto de "levantarse" al pasar el mouse */
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px); /* sube 3px al pasar el mouse */
+}
+
+/* ==========================================
+   6. HABILIDADES (Grid)
+   ==========================================
+   Aquí usamos Grid en vez de Flexbox.
+   Grid es mejor cuando quieres filas Y columnas
+   organizadas, como una cuadrícula real.
+*/
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  /* 3 columnas de igual ancho (1fr = "1 fracción" del espacio disponible) */
+  gap: 2rem; /* espacio entre las tarjetas */
+}
+
+.skill-category {
+  background-color: var(--blanco);
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08); /* sombra suave, le da profundidad */
+}
+
+.skill-category h3 {
+  color: var(--morado-medio);
+  margin-bottom: 0.8rem;
+}
+
+.skill-category ul {
+  list-style: none;
+}
+
+.skill-category li {
+  padding: 0.3rem 0;
+}
+
+/* ==========================================
+   7. PROYECTOS (Grid)
+   ==========================================
+*/
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 columnas */
+  gap: 2rem;
+}
+
+.project-card {
+  background-color: var(--blanco);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.project-card--placeholder {
+  border: 2px dashed var(--morado-claro); 
+  /* borde punteado = señal visual de "esto es un espacio reservado" */
+  text-align: center;
+  color: #9CA3AF;
+}
+
+.section-intro {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #6B7280;
+}
+
+/* ==========================================
+   8. EDUCACIÓN
+   ==========================================
+*/
+.education-item {
+  background-color: var(--blanco);
+  padding: 1.2rem 1.5rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  border-left: 4px solid var(--morado-medio); 
+  /* línea de color a la izquierda, como un "acento" visual */
+}
+
+.education-item h3 {
+  color: var(--morado-principal);
+}
+
+.education-item--goal {
+  border-left-color: var(--morado-claro);
+  border-left-style: dashed; /* distingue visualmente la meta futura de lo ya logrado */
+}
+
+/* ==========================================
+   9. CONTACTO
+   ==========================================
+*/
+.contact {
+  text-align: center;
+}
+
+.contact-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  list-style: none;
+  margin-top: 1.5rem;
+}
+
+.contact-links a {
+  color: var(--morado-principal);
+  font-weight: bold;
+  text-decoration: none;
+  padding: 0.6rem 1.5rem;
+  border: 2px solid var(--morado-claro);
+  border-radius: 30px;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.contact-links a:hover {
+  background-color: var(--morado-claro);
+  color: var(--blanco);
+}
+
+
+.contact-links a:hover {
+  background-color: var(--morado-principal);
+  color: var(--blanco);
+}
+
+/* ==========================================
+   10. FOOTER
+   ==========================================
+*/
+.site-footer {
+  text-align: center;
+  padding: 2rem;
+  background-color: var(--morado-oscuro);
+  color: var(--morado-suave);
+  font-size: 0.9rem;
+}
+
+/* ==========================================
+   11. RESPONSIVE (para celulares/tablets)
+   ==========================================
+   @media es una "regla condicional": estos estilos
+   SOLO se aplican cuando la pantalla mide 768px
+   de ancho o menos (ej. celulares). 
+   Así evitamos que el grid de 3 columnas se vea
+   apretado en una pantalla chica.
+*/
+@media (max-width: 768px) {
+  .nav-links {
+    display: none; 
+    /* en pantallas chicas ocultamos el menú;
+       más adelante se puede armar un menú
+       "hamburguesa" para mostrarlo con un botón */
+  }
+
+  .skills-grid,
+  .projects-grid {
+    grid-template-columns: 1fr; /* pasa a 1 sola columna en vez de 2 o 3 */
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+}
