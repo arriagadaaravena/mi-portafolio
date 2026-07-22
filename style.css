@@ -119,7 +119,14 @@ body {
   padding: 5rem 2rem;
   max-width: 100%; /* el hero ocupa todo el ancho, a diferencia de .section */
 }
-
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 2.8rem;
+  color: var(--blanco, #4338ca);
+  text-align: center;
+}
 .hero h1 {
   font-size: 2.8rem;
   margin-bottom: 0.5rem;
@@ -205,24 +212,143 @@ body {
   gap: 2rem;
 }
 
-.project-card {
-  background-color: var(--blanco);
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-}
-
-.project-card--placeholder {
-  border: 2px dashed var(--morado-claro); 
-  /* borde punteado = señal visual de "esto es un espacio reservado" */
-  text-align: center;
-  color: #9CA3AF;
-}
-
 .section-intro {
   text-align: center;
   margin-bottom: 2rem;
   color: #6B7280;
+}
+
+.project-card {
+  background-color: var(--blanco);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.project-card--placeholder {
+  border: 2px dashed var(--morado-claro);
+  text-align: center;
+  color: #9CA3AF;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 160px;
+}
+
+/* Imagen de vista previa del proyecto */
+.project-image-wrap {
+  width: 100%;
+  background-color: #f3f4f6;
+  display: flex;
+  justify-content: center;
+  padding: 24px 0;
+}
+
+.project-image {
+  width: auto;
+  max-width: 260px;
+  height: auto;
+  max-height: 340px;
+  display: block;
+  border-radius: 8px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+}
+
+/* Contenido de texto de la tarjeta */
+.project-content {
+  padding: 2rem;
+}
+
+.project-content h3 {
+  margin-bottom: 0.75rem;
+}
+
+.project-content p {
+  color: #4B5563;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+/* Lista de tecnologías usadas */
+.project-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin-bottom: 1rem;
+}
+
+.project-stack li {
+  background-color: #EEF2FF;
+  color: var(--morado-oscuro, #4338ca);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+/* Botones de enlaces del proyecto */
+.project-links {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.btn-code {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 22px;
+  background-color: #24292e;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.btn-code:hover {
+  background-color: #444d56;
+  transform: translateY(-2px);
+}
+
+.btn-code:visited {
+  color: #ffffff;
+}
+
+.btn-demo {
+  background-color: #2f855a;
+}
+
+.btn-demo:hover {
+  background-color: #276749;
+}
+
+.project-icon-wrap {
+  width: 100%;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+}
+
+.icon-library {
+  background: linear-gradient(135deg, #6d28d9, #4338ca);
+}
+
+.icon-magister {
+  background: linear-gradient(135deg, #4338ca, #312e81);
 }
 
 /* ==========================================
@@ -282,6 +408,85 @@ body {
 .contact-links a:hover {
   background-color: var(--morado-principal);
   color: var(--blanco);
+}
+
+.contact-form-section {
+  max-width: 480px;
+  margin: 3rem auto 0;
+  text-align: center;
+}
+
+.contact-form-section h2 {
+  color: var(--morado-oscuro, #4338ca);
+  margin-bottom: 1.5rem;
+}
+
+.contact-form {
+  background-color: var(--blanco);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 2rem;
+  text-align: left;
+}
+
+.contact-form fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contact-form legend {
+  font-weight: 700;
+  color: #374151;
+  margin-bottom: 1.25rem;
+  padding: 0;
+  font-size: 15px;
+}
+
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 0.4rem;
+  font-size: 14px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #D1D5DB;
+  border-radius: 8px;
+  font-size: 14px;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--morado-claro, #a5b4fc);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 12px;
+  background-color: var(--morado-oscuro, #4338ca);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.btn-submit:hover {
+  background-color: #3730a3;
+  transform: translateY(-1px);
 }
 
 /* ==========================================
