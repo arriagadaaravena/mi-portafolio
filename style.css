@@ -1,10 +1,6 @@
 /* ==========================================
    1. VARIABLES DE COLOR (Custom Properties)
    ========================================== 
-   Definimos los colores UNA VEZ aquí arriba.
-   Así, si más adelante quieres cambiar el morado,
-   lo cambias en un solo lugar y se actualiza en
-   TODA la página automáticamente.
 */
 :root {
   --morado-oscuro: #3B0764;
@@ -20,69 +16,57 @@
 /* ==========================================
    2. RESET BÁSICO
    ==========================================
-   Cada navegador (Chrome, Firefox, Safari) trae
-   márgenes y espacios por defecto distintos.
-   Este reset los pone todos en cero para que
-   partamos todos desde el mismo punto.
 */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box; 
-  /* box-sizing: border-box es importante:
-     hace que el padding y el border se cuenten
-     DENTRO del ancho del elemento, no se sumen
-     aparte. Evita muchos dolores de cabeza. */
 }
 
 body {
   font-family: 'Segoe UI', Arial, sans-serif;
   color: var(--gris-texto);
-  line-height: 1.6; /* espacio entre líneas de texto, más legible */
+  line-height: 1.6; 
   background-color: var(--gris-fondo);
 }
 
 /* ==========================================
    3. HEADER / NAVBAR
    ==========================================
-   Flexbox es la herramienta clave aquí.
-   display: flex pone los elementos hijos
-   en fila (por defecto) y justify-content
-   controla cómo se distribuyen horizontalmente.
 */
 .site-header {
   background-color: var(--morado-principal);
   padding: 1rem 2rem;
-  position: sticky; /* la barra queda "pegada" arriba al hacer scroll */
+  position: sticky; 
   top: 0;
-  z-index: 100; /* asegura que quede por encima de otros elementos */
+  z-index: 100; 
 }
 
 .navbar {
   display: flex;
-  justify-content: space-between; /* logo a la izquierda, links a la derecha */
-  align-items: center; /* centra verticalmente */
+  justify-content: space-between; 
+  align-items: center; 
   max-width: 1100px;
-  margin: 0 auto; /* centra la barra en la página */
+  margin: 0 auto; 
 }
 
 .logo {
   color: var(--blanco);
   font-size: 1.3rem;
   font-weight: bold;
-  text-decoration: none; /* quita el subrayado típico de los links */
+  text-decoration: none; 
 }
 
 .nav-links {
   display: flex;
-  gap: 1.5rem; /* espacio entre cada link, sin necesitar margin manual */
-  list-style: none; /* quita los puntitos de la lista */
+  gap: 1.5rem; 
+  list-style: none; 
 }
 
 .nav-links a {
   color: var(--morado-suave);
   text-decoration: none;
-  transition: color 0.2s; /* efecto suave al pasar el mouse */
+  transition: color 0.2s; 
 }
 
 .nav-links a:hover {
@@ -92,13 +76,11 @@ body {
 /* ==========================================
    4. SECCIONES GENERALES
    ==========================================
-   Todas las <section class="section"> comparten
-   este espaciado base, para mantener consistencia.
 */
 .section {
   max-width: 1100px;
-  margin: 0 auto; /* centra el contenido horizontalmente */
-  padding: 4rem 2rem; /* espacio arriba/abajo y a los costados */
+  margin: 0 auto; 
+  padding: 4rem 2rem; 
 }
 
 .section h2 {
@@ -117,7 +99,7 @@ body {
   background: linear-gradient(135deg, var(--morado-principal), var(--morado-oscuro));
   color: var(--blanco);
   padding: 5rem 2rem;
-  max-width: 100%; /* el hero ocupa todo el ancho, a diferencia de .section */
+  max-width: 100%; 
 }
 .hero h1 {
   font-family: 'Playfair Display', serif;
@@ -133,7 +115,7 @@ body {
 }
 
 .hero h2 {
-  color: var(--morado-suave); /* sobreescribe el color morado oscuro de arriba */
+  color: var(--morado-suave); 
   font-size: 1.3rem;
   font-weight: normal;
   margin-bottom: 2rem;
@@ -142,15 +124,15 @@ body {
 .profile-photo {
   width: 180px;
   height: 180px;
-  object-fit: cover; /* evita que la foto se vea estirada o aplastada */
-  border-radius: 50%; /* la vuelve circular */
+  object-fit: cover; 
+  border-radius: 50%; 
   border: 4px solid var(--morado-claro);
   margin-bottom: 2rem;
 }
 
 .hero p {
   max-width: 650px;
-  margin: 0 auto 2rem auto; /* centra el párrafo y le da espacio abajo */
+  margin: 0 auto 2rem auto; 
 }
 
 .btn-primary {
@@ -158,35 +140,31 @@ body {
   background-color: var(--blanco);
   color: var(--morado-principal);
   padding: 0.8rem 2rem;
-  border-radius: 30px; /* botón tipo "pill" bien redondeado */
+  border-radius: 30px; 
   text-decoration: none;
   font-weight: bold;
-  transition: transform 0.2s; /* efecto de "levantarse" al pasar el mouse */
+  transition: transform 0.2s; 
 }
 
 .btn-primary:hover {
-  transform: translateY(-3px); /* sube 3px al pasar el mouse */
+  transform: translateY(-3px); 
 }
 
 /* ==========================================
    6. HABILIDADES (Grid)
    ==========================================
-   Aquí usamos Grid en vez de Flexbox.
-   Grid es mejor cuando quieres filas Y columnas
-   organizadas, como una cuadrícula real.
 */
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr); 
-  /* 3 columnas de igual ancho (1fr = "1 fracción" del espacio disponible) */
-  gap: 2rem; /* espacio entre las tarjetas */
+  gap: 2rem; 
 }
 
 .skill-category {
   background-color: var(--blanco);
   padding: 1.5rem;
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08); /* sombra suave, le da profundidad */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
 .skill-category h3 {
@@ -208,7 +186,7 @@ body {
 */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2 columnas */
+  grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
 }
 
@@ -244,7 +222,6 @@ body {
   min-height: 160px;
 }
 
-/* Imagen de vista previa del proyecto */
 .project-image-wrap {
   width: 100%;
   background-color: #f3f4f6;
@@ -263,7 +240,6 @@ body {
   box-shadow: 0 4px 14px rgba(0,0,0,0.15);
 }
 
-/* Contenido de texto de la tarjeta */
 .project-content {
   padding: 2rem;
 }
@@ -278,7 +254,6 @@ body {
   line-height: 1.5;
 }
 
-/* Lista de tecnologías usadas */
 .project-stack {
   display: flex;
   flex-wrap: wrap;
@@ -297,7 +272,6 @@ body {
   border-radius: 20px;
 }
 
-/* Botones de enlaces del proyecto */
 .project-links {
   display: flex;
   gap: 12px;
@@ -361,7 +335,6 @@ body {
   border-radius: 10px;
   margin-bottom: 1rem;
   border-left: 4px solid var(--morado-medio); 
-  /* línea de color a la izquierda, como un "acento" visual */
 }
 
 .education-item h3 {
@@ -370,7 +343,7 @@ body {
 
 .education-item--goal {
   border-left-color: var(--morado-claro);
-  border-left-style: dashed; /* distingue visualmente la meta futura de lo ya logrado */
+  border-left-style: dashed; 
 }
 
 /* ==========================================
@@ -504,23 +477,15 @@ body {
 /* ==========================================
    11. RESPONSIVE (para celulares/tablets)
    ==========================================
-   @media es una "regla condicional": estos estilos
-   SOLO se aplican cuando la pantalla mide 768px
-   de ancho o menos (ej. celulares). 
-   Así evitamos que el grid de 3 columnas se vea
-   apretado en una pantalla chica.
 */
 @media (max-width: 768px) {
   .nav-links {
     display: none; 
-    /* en pantallas chicas ocultamos el menú;
-       más adelante se puede armar un menú
-       "hamburguesa" para mostrarlo con un botón */
   }
 
   .skills-grid,
   .projects-grid {
-    grid-template-columns: 1fr; /* pasa a 1 sola columna en vez de 2 o 3 */
+    grid-template-columns: 1fr;
   }
 
   .hero h1 {
